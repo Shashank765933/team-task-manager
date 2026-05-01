@@ -1,0 +1,107 @@
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* CONTAINER CARD */
+.container {
+  width: 420px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* HEADINGS */
+h2, h3, h4 {
+  margin-bottom: 10px;
+}
+
+/* INPUTS */
+input, select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+/* BASE BUTTON */
+button {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+  margin-top: 5px;
+}
+
+/* DEFAULT BUTTON (Create, Add Task, Login, Signup) */
+button:not(.delete-btn):not(.done-btn) {
+  background: #007bff;
+  color: white;
+}
+
+button:not(.delete-btn):not(.done-btn):hover {
+  background: #0056b3;
+  transform: scale(1.03);
+}
+
+/* DONE BUTTON (GREEN) */
+.done-btn {
+  background: #28a745;
+  color: white;
+}
+
+.done-btn:hover {
+  background: #1e7e34;
+  transform: scale(1.08);
+}
+
+/* DELETE BUTTON (RED) */
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #a71d2a;
+  transform: scale(1.08);
+}
+
+/* CLICK EFFECT */
+button:active {
+  transform: scale(0.95);
+}
+
+/* LIST ITEMS ALIGNMENT */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+/* BUTTON GROUP FOR TASKS */
+.btn-group {
+  display: flex;
+  gap: 6px;
+}
+
+/* DASHBOARD TEXT */
+#stats {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
