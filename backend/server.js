@@ -6,13 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// USERS
+// ================= USERS =================
 let users = [
   { email: "admin@test.com", password: "123", role: "admin" },
   { email: "member@test.com", password: "123", role: "member" }
 ];
 
-// DATA
+// ================= DATA =================
 let projects = [];
 let tasks = [];
 
@@ -29,8 +29,7 @@ app.post("/signup", (req, res) => {
     return res.json({ msg: "User already exists" });
   }
 
-  const newUser = { email, password, role };
-  users.push(newUser);
+  users.push({ email, password, role });
 
   res.json({ msg: "Signup successful" });
 });
@@ -128,16 +127,15 @@ app.get("/dashboard", (req, res) => {
 });
 
 
-// ================= DEPLOYMENT PART =================
-
-// Serve frontend
+// ================= SERVE FRONTEND =================
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
-// PORT (important for Railway)
+
+// ================= PORT =================
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
