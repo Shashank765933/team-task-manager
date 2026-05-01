@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -30,7 +31,6 @@ app.post("/signup", (req, res) => {
   }
 
   users.push({ email, password, role });
-
   res.json({ msg: "Signup successful" });
 });
 
@@ -55,11 +55,6 @@ app.post("/project", (req, res) => {
 
   if (!req.body.name) {
     return res.json({ msg: "Project name required" });
-  }
-
-  const exists = projects.find(p => p.name === req.body.name);
-  if (exists) {
-    return res.json({ msg: "Project already exists" });
   }
 
   const project = {
@@ -128,10 +123,21 @@ app.get("/dashboard", (req, res) => {
 
 
 // ================= SERVE FRONTEND =================
-app.use(express.static(path.join(__dirname, "../frontend")));
 
+// VERY IMPORTANT: correct path
+const frontendPath = path.join(__dirname, "../frontend");
+
+// serve static files
+app.use(express.static(frontendPath));
+
+// root route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
+// fallback (for all routes)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 
@@ -139,5 +145,5 @@ app.get("*", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log("Server running");
+  console.log("Server running on port " + PORT);
 });
